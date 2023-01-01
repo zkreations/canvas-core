@@ -1,5 +1,5 @@
 {
-  "name": "canvas-core",
+  "name": "@zkreations/canvas",
   "version": "1.0.0",
   "description": "Archivos y otros recursos útiles para el repo canvas Blogger",
   "main": "index.js",
