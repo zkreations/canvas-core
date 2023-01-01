@@ -2,7 +2,6 @@
   "name": "@zkreations/canvas",
   "version": "1.0.0",
   "description": "Archivos y otros recursos útiles para el repo canvas Blogger",
-  "main": "index.js",
   "scripts": {
     "build:css": "npm-run-all compile:css minify:css",
     "compile:css": "sass --style expanded --no-source-map --no-error-css scss/:dist/css/",
