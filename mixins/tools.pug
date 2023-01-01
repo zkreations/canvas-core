@@ -1,0 +1,32 @@
+//- Herramientas de canvas
+//- @author zkreations
+//- @param {array} [tools] - Tipo de marcado predeterminado
+
+-
+  let defaultTools = [
+    "ads",
+    "adsense",
+    "attr",
+    "image",
+    "kind",
+    "meta",
+  ]
+
+mixin default-tools(tools=defaultTools)
+  if (tools.includes("ads"))
+    include markups/ads
+
+  if (tools.includes("adsense"))
+    include markups/adsense
+  
+  if (tools.includes("attr"))
+    include markups/attr
+
+  if (tools.includes("image"))
+    include markups/image
+
+  if (tools.includes("kind"))
+    include markups/kind
+
+  if (tools.includes("meta"))
+    include markups/meta

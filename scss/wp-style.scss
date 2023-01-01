@@ -1,0 +1,277 @@
+// Theme: WP-style (Modo Layout estilo wordpress para Blogger)
+// Author: Abel Daniel Moreira Moreno (@zkreations)
+
+// Renombrar widgets
+$widgets: (
+  AdSense: "AdSense",
+  HTML: "HTML",
+  Header: "Header",
+  Text: "Text",
+  TextList: "TextList",
+  Blog: "Blog",
+  BlogSearch: "Search",
+  BlogArchive: "Archive",
+  FeaturedPost: "Featured",
+  PopularPosts: "Populars",
+  Profile: "Profile",
+  Image: "Image",
+  Label: "Label",
+  PageList: "PageList",
+  LinkList: "LinkList",
+  ContactForm: "Contact",
+  Subscribe: "Subscribe"
+) !default;
+
+// Iconos usados
+$icon-edit: "https://www.gstatic.com/images/icons/material/system_gm/1x/mode_edit_grey600_20dp.png";
+$icon-visible: "https://www.gstatic.com/images/icons/material/system/2x/visibility_black_24dp.png";
+$icon-invisible: "https://www.gstatic.com/images/icons/material/system/2x/visibility_off_black_24dp.png";
+$icon-lock: "https://www.gstatic.com/images/icons/material/system_gm/1x/lock_grey600_20dp.png";
+$icon-image: "https://www.gstatic.com/images/icons/material/system_gm/2x/image_grey600_24dp.png";
+$icon-enqueue: "https://www.gstatic.com/images/icons/material/system_gm/2x/ballot_grey600_24dp.png";
+
+// Estilos
+$layout-bg: #f4f4f5;
+$layout-padding: 14px;
+
+$layout-column: 386px;
+$layout-column-gap: 16px;
+
+@mixin icons {
+  background-size: cover;
+  width: 20px;
+  height: 20px;
+  margin-top: 2px;
+  margin-right: 10px;
+}
+
+@mixin section {
+  margin: 0 0 16px 0;
+  padding: 12px;
+  background-color: #fff;
+  height: auto !important;
+
+  &.activated-section {
+    border-color: #8c8f94;
+  }
+}
+
+@mixin section-title {
+  text-transform: capitalize;
+  margin: 0 0 14px;
+  color: #263238;
+  font-size: 17px;
+  font-weight: normal;
+}
+
+@mixin section-add-widget {
+  padding: 12px;
+  a {
+    font-size: 14px;
+    color: #263238;
+    margin-left: 32px;
+    &:hover {
+      text-decoration: none;
+      color: #23a6b3;
+    }
+  }
+}
+
+@mixin widget {
+  background-color: #f6f7f7;
+  padding: 12px;
+  border: 1px solid #c3c4c7;
+  color: #263238;
+
+  &:hover {
+    border-color: #8c8f94;
+  }
+
+  // Título
+  .layout-title {
+    margin: 0 30px 0 0;
+    font-size: 14px;
+    color: #999;
+
+    // Nuevo nombre de widget
+    &::before {
+      color: #262626;
+      font-weight: 500;
+    }
+  }
+}
+
+@mixin widget-locked {
+  background-image: url($icon-lock);
+  background-repeat: no-repeat;
+  background-position: center right 10px;
+}
+
+@mixin widget-status {
+  &.visible {
+    background-image: url($icon-visible);
+    opacity: .75;
+  }
+
+  &.not-visible {
+    background-image: url($icon-invisible);
+    opacity: 0.25;
+  }
+}
+
+@mixin tools {
+  background-color: #e9ecec;
+  border: 0 none;
+  margin-right: 0;
+  border-radius: 5px;
+}
+
+@mixin tools-button {
+  margin: 0;
+  float: left;
+
+  &-content {
+    padding: 20px;
+    background-size: 24px;
+  }
+
+  &-wrap3 {
+    border: 0 none;
+    border-radius: 5px;
+  }
+}
+
+// Estilos
+body#layout {
+  padding: $layout-padding;
+  background-color: $layout-bg;
+
+  // Seccion de secciones
+  .layout {
+    // Columnas
+    &-section {
+      float: left;
+      min-width: $layout-column;
+      margin: 0 $layout-column-gap $layout-column-gap 0;
+    }
+
+    // Hack: Quitar descripción original
+    &-widget-description { display: none; }
+  }
+
+  // Hack: Normaliza el alto del widget Blog
+  .Blog .widget-content { height: auto; }
+
+  // Creamos nuestra propia descripción
+  @each $key,
+  $item in $widgets {
+    .#{$key} .layout-title::before {
+      content: "#{$item}: ";
+    }
+  }
+
+  // Borrar sombra y simular una nueva
+  .widget-wrap3 {
+    overflow: hidden;
+    border-bottom: 1px solid #f2f2f2;
+  }
+
+  // Secciones
+  div.section {
+    @include section;
+
+    // Titulo de secciones
+    h4 { @include section-title; }
+
+    // Seccion para añadir widgets
+    .add_widget { @include section-add-widget; }
+
+    // Estilo de widgets
+    div.widget-content { 
+      @include widget;
+
+      // Visibilidad
+      .layout-widget-state { @include widget-status; }
+
+      // Hack: Clic en cualquier parte
+      .editlink.icon {
+        background-image: none;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    // Iconos de agregar y estados (visible/oculto)
+    .layout-widget-state,
+    .add-icon { @include icons; }
+
+    // Si el widget esta bloqueado (no se mueve)
+    .locked-widget .widget-content { @include widget-locked; }
+  }
+
+  // Borramos estilos de widget arrastrables
+  .draggable-widget {
+    .widget-wrap3 {
+      margin-left: 0;
+      background: none;
+    }
+
+    .widget-wrap2 {
+      background: none;
+      cursor: default;
+    }
+  }
+
+  // Indicador de posicion
+  .dr_active {
+    margin: 0;
+    border: 1px dashed #ccc;
+  }
+
+  // (fix) Evitamos el desplazamiento de elementos
+  .widget.el_active {
+    // (fix) Evitamos activar accidentalmente la edición al arrastrar
+    .editlink.icon {
+      display: none;
+    }
+  }
+
+  // Barra de herramientas (opcional)
+  .tools { display: flex; }
+
+  #tools {
+    @include tools;
+
+    // Eliminando elementos innecesarios
+    h4,
+    .dropregion,
+    .layout-title,
+    .layout-widget-state { display: none; }
+
+    .widget {
+      //- Hack: centrar iconos
+
+      @include tools-button;
+
+      &-content {
+        border: 0 none;
+        background-image: none;
+        background-position: center;
+        background-repeat: no-repeat;
+      }
+
+      //- Herramienta para subir imagenes
+      &.Image {
+        margin-right: 5px;
+        .widget-content { background-image: url($icon-image); }
+      }
+
+      //- Herramienta poner archivos en cola
+      &.LinkList {
+        .widget-content { background-image: url($icon-enqueue); }
+      }
+    }
+  }
+}

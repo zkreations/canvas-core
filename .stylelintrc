@@ -1,0 +1,42 @@
+{
+  "extends": "stylelint-config-recommended-scss",
+  "rules": {
+    "at-rule-empty-line-before": [
+      "always",
+      {
+        "except": [
+          "blockless-after-same-name-blockless",
+          "first-nested"
+        ],
+        "ignoreAtRules": [
+          "else"
+        ],
+        "ignore": [
+          "after-comment"
+        ]
+      }
+    ],
+    "declaration-block-semicolon-newline-before": "never-multi-line",
+    "declaration-block-trailing-semicolon": "always",
+    "font-family-name-quotes": "always-where-recommended",
+    "max-empty-lines": 1,
+    "max-line-length": null,
+    "selector-list-comma-space-before": "never",
+    "selector-list-comma-space-after": "never-single-line",
+    "selector-list-comma-newline-after": "always",
+    "scss/at-function-named-arguments": "never",
+    "scss/comment-no-empty": null,
+    "scss/dimension-no-non-numeric-values": true,
+    "scss/dollar-variable-colon-space-before": "never",
+    "scss/dollar-variable-colon-space-after": "at-least-one-space",
+    "scss/dollar-variable-no-missing-interpolation": true,
+    "scss/media-feature-value-dollar-variable": null,
+    "scss/no-duplicate-mixins": true,
+    "scss/no-global-function-names": null,
+    "scss/operator-no-unspaced": true,
+    "scss/operator-no-newline-before": true,
+    "scss/operator-no-newline-after": true,
+    "scss/selector-no-redundant-nesting-selector": true,
+    "value-list-comma-space-after": "always"
+  }
+}
