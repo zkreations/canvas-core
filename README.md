@@ -2,6 +2,14 @@
 
 Mixins y otros recursos útiles que se utilizan como punto de partida para crear una plantilla de Blogger. Puedes ver un ejemplo básico en: https://github.com/zkreations/canvas
 
+## Instalar
+
+### npm
+
+```
+npm i @zkreations/canvas -D
+```
+
 ## Mixins
 
 ### variables
