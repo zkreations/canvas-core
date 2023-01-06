@@ -1,6 +1,6 @@
 {
   "name": "@zkreations/canvas",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Archivos y otros recursos útiles para el repo canvas Blogger",
   "scripts": {
     "build:css": "npm-run-all compile:css minify:css",
