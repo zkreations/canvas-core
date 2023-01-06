@@ -141,6 +141,32 @@ $layout-column-gap: 16px;
   }
 }
 
+@mixin access-mode {
+  div.widget-content {
+    .editlink.icon {
+      background-image: url($icon-edit);
+      width: 36px;
+      left: auto;
+      right: 0;
+      background-color: #f1f3f3;
+      border-left: 1px solid #c3c4c7;
+
+      &:hover {
+        background-color: #e3e8e8
+      }
+    }
+
+    &:hover { border-color: #c3c4c7 }
+
+    .layout-title { margin: 0 58px 0 0 }
+  
+  }
+
+  .widget.el_active .editlink.icon { display: block }
+  .locked-widget .widget-content { background-position: center right 46px }
+}
+
+
 // Estilos
 body#layout {
   padding: $layout-padding;
@@ -210,6 +236,9 @@ body#layout {
     // Si el widget esta bloqueado (no se mueve)
     .locked-widget .widget-content { @include widget-locked; }
   }
+
+  // Modo Accesible
+  .layout-accessibility div.section { @include access-mode; }
 
   // Borramos estilos de widget arrastrables
   .draggable-widget {
