@@ -1,17 +1,17 @@
-//- Manipular imágenes de servidores de Google
+//- Manipular imagenes de servidores de Google
 //- @author zkreations
 //- @param {image} src - Url de imagen
 //- @param {string} [alt=data:messages.image] - Texto de respaldo
-//- @param {string} [id] - Identificador único
+//- @param {string} [id] - Identificador unico
 //- @param {string} [class] - Clases adicionales
 //- @param {string} [width] - Ancho de la imagen
 //- @param {string} [height] - Alto de la imagen
-//- @param {number} [resize=1280] - Cambiar el tamaño
-//- @param {string} [ratio] - Relación de aspecto
+//- @param {number} [resize=1280] - Cambiar las dimensiones
+//- @param {string} [ratio] - Relacion de aspecto
 //- @param {string} [sizes] - Valor del atributo sizes
-//- @param {array} [srcset] - Matriz de tamaños
+//- @param {array} [srcset] - Matriz de dimensiones
 //- @param {string} [loading] - Atributo loading
-//- @param {string} [params] - Parámetros adicionales de imágenes de Google
+//- @param {string} [params] - Parametros adicionales de imagenes de Google
 
 b:includable(id='@:image')
   b:if(cond='data:src')
@@ -39,13 +39,13 @@ b:includable(id='@:image')
           //- Agrega clases adicionales
           b:class(cond='data:class' expr:name='data:class')
 
-          //- Servidor de imagen sin nombre (permite agregar mas parámetros)
+          //- Servidor de imagen sin nombre (permite agregar mas parametros)
           b:with(value='"blogger.googleusercontent.com/img/a/"' var='serve')
 
-            //- Si srcset existe, el valor de "src" equivale a la primera resolución
-            //- Agregamos parámetros adicionales si están disponible
+            //- Si srcset existe, el valor de "src" equivale a la primera resolucion
+            //- Agregamos parametros adicionales si estan disponible
             b:attr(name='src' expr:value='(data:srcset ? resizeImage(data:image, data:srcset.first, data:ratio) : data:image) + ((data:image contains data:serve) and data:params ? ("-" + data:params) : "")')
 
-            //- Si srcset existe, genera las variantes de tamaños especificados
+            //- Si srcset existe, genera las variantes de dimensiones especificadas
             b:if(cond='data:srcset')
               b:attr(name='srcset' expr:value='sourceSet(data:image, data:srcset, data:ratio)')

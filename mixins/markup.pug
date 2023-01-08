@@ -3,10 +3,10 @@
 //- @param {string} [type="Common"] - Tipo de marcado predeterminado
 
 mixin markup(type="Common")
-  //- Comprobamos si el nombre es estrictamente un marcado predeterminado válido
+  //- Comprobamos si el nombre es estrictamente un marcado predeterminado valido
   if (/All|Common|AdSense|Blog|BlogArchive|BlogList|BlogSearch|ContactForm|FeaturedPost|Feed|Header|HTML|Image|Label|LinkList|PageList|PopularPosts|Profile|Stats|Subscribe|Text|TextList|Translate|Wikipedia/.test(type))
 
-    //- Remueve espacios del tipo ya que no son válidos
+    //- Remueve espacios del tipo ya que no son validos
     - let widgetType = type.trim()
 
     b:defaultmarkup(type=widgetType)
@@ -17,4 +17,4 @@ mixin markup(type="Common")
   else if(/Followers|Navbar|Attribution/.test(type))
     - console.warn(`El tipo "${type}" es de solo lectura, no se puede modificar`)
   else
-    - console.warn(`El tipo "${type}" no es un marcado predeterminado válido en Blogger`)
+    - console.warn(`El tipo "${type}" no es un marcado predeterminado valido en Blogger`)

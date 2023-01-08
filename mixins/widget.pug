@@ -5,13 +5,13 @@
 //- @param {number} [number] - Numero arbitrario del widget
 
 mixin widget(type="HTML", settings={}, number)
-  //- Comprobamos si el nombre es estrictamente un widget de Blogger válido
+  //- Comprobamos si el nombre es estrictamente un widget de Blogger valido
   if (/AdSense|Blog|BlogArchive|BlogList|BlogSearch|ContactForm|FeaturedPost|Feed|Header|HTML|Image|Label|LinkList|PageList|PopularPosts|Profile|Stats|Subscribe|Text|TextList|Translate|Wikipedia/.test(type))
     -
-      //- Remueve espacios ya que no son válidos
+      //- Remueve espacios ya que no son validos
       let widgetType = type.trim()
 
-      //- Cuando la variable `widgets` no existe en `locals` (null) lo creamos con un objeto vació
+      //- Cuando la variable `widgets` no existe en `locals` (null) lo creamos con un objeto vacio
       null == locals.widgets && (locals.widgets = {});
 
       //- Si el nombre no existe dentro del objeto `widgets`, lo creamos
@@ -24,10 +24,10 @@ mixin widget(type="HTML", settings={}, number)
 
       //- Se compone del nombre mas un numero del 1 al 999
       //- El numero se obtiene del objeto `widgets`
-      //- Definir un numero arbitrario o un contador inicial también es posible
+      //- Definir un numero arbitrario o un contador inicial tambien es posible
       let instanceId = widgetType + ( number ?? ( locals.widgets[widgetType] + (initCall ?? 0) ) )
 
-    //- Creamos la etiqueta b:widget con la información hasta el momento
+    //- Creamos la etiqueta b:widget con la informacion hasta el momento
     b:widget(id=instanceId type=widgetType version=2)&attributes(attributes)
 
       //- Opciones predeterminadas
@@ -43,4 +43,4 @@ mixin widget(type="HTML", settings={}, number)
   else if(/Followers|Navbar|Attribution/.test(type))
     - console.warn(`El tipo "${type}" es de solo lectura, no se puede modificar`)
   else
-    - console.warn(`El tipo "${type}" no es un widget válido en Blogger`)
+    - console.warn(`El tipo "${type}" no es un widget valido en Blogger`)

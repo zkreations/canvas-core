@@ -87,7 +87,7 @@ $layout-column-gap: 16px;
     border-color: #8c8f94;
   }
 
-  // Título
+  // Titulo
   .layout-title {
     margin: 0 30px 0 0;
     font-size: 14px;
@@ -181,14 +181,14 @@ body#layout {
       margin: 0 $layout-column-gap $layout-column-gap 0;
     }
 
-    // Hack: Quitar descripción original
+    // Hack: Quitar descripcion original
     &-widget-description { display: none; }
   }
 
   // Hack: Normaliza el alto del widget Blog
   .Blog .widget-content { height: auto; }
 
-  // Creamos nuestra propia descripción
+  // Creamos nuestra propia descripcion
   @each $key,
   $item in $widgets {
     .#{$key} .layout-title::before {
@@ -209,7 +209,7 @@ body#layout {
     // Titulo de secciones
     h4 { @include section-title; }
 
-    // Seccion para añadir widgets
+    // Seccion para agregar widgets
     .add_widget { @include section-add-widget; }
 
     // Estilo de widgets
@@ -261,7 +261,7 @@ body#layout {
 
   // (fix) Evitamos el desplazamiento de elementos
   .widget.el_active {
-    // (fix) Evitamos activar accidentalmente la edición al arrastrar
+    // (fix) Evitamos activar accidentalmente la edicion al arrastrar
     .editlink.icon {
       display: none;
     }
