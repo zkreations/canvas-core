@@ -6,6 +6,7 @@
   let defaultTools = [
     "ads",
     "adsense",
+    "analytics",
     "attr",
     "image",
     "kind",
@@ -18,7 +19,10 @@ mixin default-tools(tools=defaultTools)
 
   if (tools.includes("adsense"))
     include markups/adsense
-  
+
+  if (tools.includes("analytics"))
+    include markups/adsense
+
   if (tools.includes("attr"))
     include markups/attr
 

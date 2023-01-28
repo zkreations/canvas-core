@@ -213,6 +213,14 @@ Agrega la etiqueta que incluye el código JavaScript de AdSense, la cual está a
 <b:include name='@:adsense'/>
 ```
 
+### @:analytics
+
+Agrega la etiqueta que incluye el código JavaScript de Analytics (GA4). Cargará si la ID de Analytics esta habilitado en el blog:
+
+```xml
+<b:include name='@:analytics'/>
+```
+
 ### @:attr
 
 Agrega o remueve multiples atributos al nodo superior. Cada matriz debe estar conformada por dos elementos tipo `string`, el primer elemento sera el nombre del atributo, el segundo elemento corresponderá a su valor. Si el valor está vació o no está presente, el atributo especificado se borrará del nodo superior:
